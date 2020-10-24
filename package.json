@@ -8,20 +8,30 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/native": "^5.7.6",
+    "@react-navigation/stack": "^5.9.3",
     "babel-plugin-inline-dotenv": "^1.6.0",
-    "expo": "~38.0.8",
-    "expo-status-bar": "^1.0.2",
-    "lottie-react-native": "^3.5.0",
+    "expo": "^39.0.0",
+    "expo-status-bar": "~1.0.2",
+    "lottie-ios": "^3.1.8",
+    "lottie-react-native": "~2.6.1",
     "newsapi": "^2.4.1",
-    "react": "~16.11.0",
-    "react-dom": "~16.11.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
+    "react-native-elements": "^3.0.0-alpha.1",
+    "react-native-gesture-handler": "~1.7.0",
     "react-native-rest-client": "^0.1.1",
-    "react-native-web": "~0.11.7"
+    "react-native-safe-area-context": "3.1.4",
+    "react-native-screens": "~2.10.1",
+    "react-native-vector-icons": "^7.1.0",
+    "react-native-web": "~0.13.7",
+    "expo-font": "~8.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "babel-preset-expo": "~8.1.0",
+    "babel-preset-expo": "^8.3.0",
     "metro-react-native-babel-preset": "^0.63.0"
   },
   "private": true

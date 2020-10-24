@@ -3,6 +3,7 @@ import {
     View, 
     StyleSheet 
 } from 'react-native';
+import LottieView from 'lottie-react-native';
 import { styles as style } from './style';
 
 export default class Splash extends Component {
@@ -15,7 +16,16 @@ export default class Splash extends Component {
             <View
                 style={styles.mainContainer}
             >
-
+                <LottieView
+                    source={require('../../assets/circles.json')}
+                    autoPlay
+                    loop={false}
+                    speed={1.2}
+                    onAnimationFinish={() => {
+                        console.log('Animation Finished !');
+                        this.props.navigation.replace('Login');
+                    }}
+                />
             </View>
         );
     }
