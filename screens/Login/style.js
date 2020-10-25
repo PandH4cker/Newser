@@ -23,5 +23,9 @@ export const styles = {
     },
     inputGroup: {
         marginTop: 20
+    },
+    dontHaveAccountContainer: {
+        flexDirection: 'row',
+        marginVertical: 5
     }
 }

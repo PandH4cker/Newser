@@ -7,6 +7,7 @@ import {
     ScrollView
 } from 'react-native';
 import Inputs from '../../components/Inputs';
+import Submit from '../../components/Submit/Submit';
 import { styles as style } from './style';
 
 export default class Login extends Component {
@@ -20,22 +21,18 @@ export default class Login extends Component {
                 style={styles.mainContainer}
             >
                 <View
-                    style={style.container}
+                    style={styles.container}
                 >
                     <Image 
                         source={require('../../assets/login.png')}
                         resizeMode='center'
-                        style={style.image} />
+                        style={styles.image} />
                     <Text
-                        style={style.textTitle}
-                    >
-                        Welcome back
-                    </Text>
+                        style={styles.textTitle}
+                        >Welcome back</Text>
                     <Text
                         style={styles.textBody}
-                    >
-                        Log in to your existant account
-                    </Text>
+                        >Log in to your existant account</Text>
                     <View
                         style={styles.inputGroup}
                     />
@@ -48,6 +45,21 @@ export default class Login extends Component {
                         icon="lock"
                         pass={true}
                     />
+                    <Submit
+                        title="LOG IN" 
+                        color="#0148a4"
+                    />
+                    <View
+                        style={styles.dontHaveAccountContainer}
+                    >
+                        <Text 
+                            style={styles.textBody}
+                            >Don't Have an account?</Text>
+                        <Text 
+                            style={[styles.textBody, { color: 'blue' }]} 
+                            onPress={() => this.props.navigation.navigate('SignUp')}
+                            > Sign Up</Text>
+                    </View>
                 </View>
             </ScrollView>
         );
