@@ -57,7 +57,7 @@ export default class Login extends Component {
                             >Don't Have an account?</Text>
                         <Text 
                             style={[styles.textBody, { color: 'blue' }]} 
-                            onPress={() => this.props.navigation.navigate('SignUp')}
+                            onPress={() => this.props.navigation.navigate('Register')}
                             > Sign Up</Text>
                     </View>
                 </View>

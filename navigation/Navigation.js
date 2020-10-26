@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Splash from '../screens/Splash';
 import Login from '../screens/Login';
+import Register from '../screens/Register';
 
 const StackNavigator = createStackNavigator();
 
@@ -32,6 +33,10 @@ export default class Navigation extends Component {
                     <StackNavigator.Screen 
                         name="Login" 
                         component={Login}
+                    />
+                    <StackNavigator.Screen 
+                        name="Register"
+                        component={Register}
                     />
                 </StackNavigator.Navigator>
             </NavigationContainer>
