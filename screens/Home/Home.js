@@ -5,7 +5,8 @@ import {
     ImageBackground,
     Text
 } from 'react-native';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+//import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+import Swiper from 'react-native-swiper';
 
 import { styles as style } from './style';
 import NewsAPI from 'newsapi';
@@ -21,14 +22,14 @@ export default class Home extends Component {
             user: this.props.route.params.user,
             token: this.props.route.params.token,
             fetchedArticles: [...data.articles.filter(item => item.urlToImage !== null)],
-            gestureName: 'none',
-            currentArticles: 0
+            //gestureName: 'none',
+            //currentArticles: 0
         };
 
-        this._onSwipeLeft = this._onSwipeLeft.bind(this);
+        //this._onSwipeLeft = this._onSwipeLeft.bind(this);
     }
 
-    _onSwipeRight(gestureState) {
+   /* _onSwipeRight(gestureState) {
         if (this.state.currentArticles - 1 >= 0)
             this.setState({ currentArticles: this.state.currentArticles - 1})
     }
@@ -36,7 +37,7 @@ export default class Home extends Component {
     _onSwipeLeft(gestureState) {
         if (this.state.currentArticles + 1 < this.state.fetchedArticles.length)
             this.setState({ currentArticles: this.state.currentArticles + 1})
-    }
+    }*/
 
     /*_onSwipe(gestureName, gestureState) {
         const { SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
@@ -52,13 +53,36 @@ export default class Home extends Component {
         console.log(this.state.user)
         console.log("User Token: " + this.state.token)
         const { fetchedArticles, currentArticles } = this.state;
-        const config = {
+        /*const config = {
             velocityThreshold: 0.3,
             directionalOffsetThreshold: 80
-        };
+        };*/
         console.log(this.state.currentArticles)
+        const items = [];
+        for (const [index, value] of fetchedArticles.entries())
+            items.push(
+                <View
+                    key={index}
+                    style={styles.container}
+                >
+                    <ImageBackground
+                        resizeMode='stretch'
+                        style={styles.image}
+                        source={{
+                            uri: value.urlToImage
+                        }}
+                    />
+                </View>
+            );
         return (
-            <GestureRecognizer
+            <Swiper
+                showsPagination={false}
+                loop={false}
+                style={styles.gestureContainer}
+            >
+                {items}
+            </Swiper>
+            /*<GestureRecognizer
                 onSwipeLeft={state => this._onSwipeLeft(state)}
                 onSwipeRight={state => this._onSwipeRight(state)}
                 config={config}
@@ -75,7 +99,7 @@ export default class Home extends Component {
                             }}
                         />
                 </View>
-            </GestureRecognizer>
+            </GestureRecognizer>*/
         );
     }
 }
