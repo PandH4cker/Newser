@@ -41,6 +41,7 @@ export default class Inputs extends Component {
                 style={[styles.mainContainer, { borderColor: this.state.isFocused ? '#0779ef' : '#eee'}]}
             >
                 <Input
+                    onChangeText={this.props.onChangeText}
                     ref={(component) => this._input = component}
                     onFocus={() => this._onFocusChange()}
                     onBlur={() => this._onBlur()}

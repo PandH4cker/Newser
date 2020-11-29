@@ -17,3 +17,7 @@ web-build/
 
 # npm
 package-lock.json
+
+# data preview of NewsAPI
+data.json
+data2.json

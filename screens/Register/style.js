@@ -4,8 +4,7 @@ export const styles = {
     },
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        alignItems: 'center'
     },
     image: {
         width: 400,
@@ -13,19 +12,16 @@ export const styles = {
         marginVertical: 10
     },
     textTitle: {
-        fontFamily: 'Roboto-Medium',
         fontSize: 40,
-        marginVertical: 10
+        fontFamily: 'Roboto-Medium',
+        marginVertical: 5
     },
     textBody: {
-        fontFamily: 'Roboto-Medium',
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: 'Roboto-Medium'
     },
-    inputGroup: {
-        marginTop: 20
-    },
-    dontHaveAccountContainer: {
+    alreadyHaveAccount: {
         flexDirection: 'row',
-        marginVertical: 5
+        marginBottom: '5%'
     }
 }
