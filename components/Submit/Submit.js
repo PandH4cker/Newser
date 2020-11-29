@@ -10,13 +10,14 @@ import { styles as style } from './style';
 
 export default class Submit extends Component {
     constructor(props) {
-        super();
+        super(props);
     }
 
     render() {
         return (
             <TouchableOpacity
                 style={[styles.mainContainer, { backgroundColor: this.props.color }]}
+                onPress={this.props.onPress}
             >
                 <Text
                     style={styles.submitText}

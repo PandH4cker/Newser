@@ -61,7 +61,10 @@ export default class CivilityDropDown extends Component {
                     labelStyle={styles.labelStyle}
                     selectedLabelStyle={styles.selectedLabelStyle}
                     placeholderStyle={styles.placeholderStyle}
-                    onChangeItem={item => this.setState({ civility: item.value })}
+                    onChangeItem={item => {
+                        this.setState({ civility: item.value })
+                        this.props.onChangeItem(item.value)
+                    }}
                     onOpen={() => this._onOpen()}
                     onClose={() => this._onClose()}
                 />
