@@ -34,13 +34,15 @@
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-swipe-gestures": "^1.0.5",
+    "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.7",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "redux-persist": "^3.4.0",
     "redux-persist-transform-filter": "0.0.4",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "expo-web-browser": "~8.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
