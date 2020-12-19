@@ -3,14 +3,14 @@ import {
     View,
     StyleSheet,
     ImageBackground,
-    Text
+    Text,
+    TouchableOpacity
 } from 'react-native';
-//import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+import * as WebBrowser from 'expo-web-browser';
 import Swiper from 'react-native-swiper';
 
 import { styles as style } from './style';
 import NewsAPI from 'newsapi';
-import * as data from '../../data2.json';
 
 const newsAPI = new NewsAPI(process.env.API_KEY);
 
@@ -21,57 +21,64 @@ export default class Home extends Component {
         this.state = {
             user: this.props.route.params.user,
             token: this.props.route.params.token,
-            fetchedArticles: [...data.articles.filter(item => item.urlToImage !== null)],
-            //gestureName: 'none',
-            //currentArticles: 0
+            fetchedArticles: [],
         };
 
-        //this._onSwipeLeft = this._onSwipeLeft.bind(this);
+        this._handlePressArticle = this._handlePressArticle.bind(this);
     }
 
-   /* _onSwipeRight(gestureState) {
-        if (this.state.currentArticles - 1 >= 0)
-            this.setState({ currentArticles: this.state.currentArticles - 1})
+
+    componentDidMount() {
+        newsAPI.v2.topHeadlines({
+            country: 'fr',
+            language: 'fr'
+        }).then(response => {
+            this.setState({ fetchedArticles: response.articles })
+        })
     }
 
-    _onSwipeLeft(gestureState) {
-        if (this.state.currentArticles + 1 < this.state.fetchedArticles.length)
-            this.setState({ currentArticles: this.state.currentArticles + 1})
-    }*/
-
-    /*_onSwipe(gestureName, gestureState) {
-        const { SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
-        this.setState({ gestureName: gestureName });
-        switch (gestureName) {
-            case SWIPE_RIGHT:
-                console.log("Swiped Right in switch()")
-                break;
-        }
-    }*/
+    async _handlePressArticle(url) {
+        await WebBrowser.openBrowserAsync(url);
+    }
 
     render() {
-        console.log(this.state.user)
-        console.log("User Token: " + this.state.token)
-        const { fetchedArticles, currentArticles } = this.state;
-        /*const config = {
-            velocityThreshold: 0.3,
-            directionalOffsetThreshold: 80
-        };*/
-        console.log(this.state.currentArticles)
+        const { fetchedArticles } = this.state;
         const items = [];
-        for (const [index, value] of fetchedArticles.entries())
+        for (const [index, article] of fetchedArticles.entries())
             items.push(
                 <View
                     key={index}
                     style={styles.container}
                 >
                     <ImageBackground
-                        resizeMode='stretch'
-                        style={styles.image}
+                        resizeMode='cover'
+                        blurRadius={10}
+                        style={styles.backgroundImage}
                         source={{
-                            uri: value.urlToImage
+                            uri: article.urlToImage
                         }}
-                    />
+                    >
+                        <TouchableOpacity
+                            style={styles.innerImage}
+                            onPress={() => this._handlePressArticle(article.url)}
+                        >
+                            <ImageBackground
+                                resizeMode='contain'
+                                style={styles.innerImage}
+                                source={{
+                                    uri: article.urlToImage
+                                }}
+                            >
+                                <View
+                                    style={styles.underImageView}
+                                >
+                                    <Text
+                                        style={styles.textStyle}
+                                    >{article.title}</Text>
+                                </View>
+                            </ImageBackground>
+                        </TouchableOpacity>
+                    </ImageBackground>
                 </View>
             );
         return (
@@ -82,24 +89,6 @@ export default class Home extends Component {
             >
                 {items}
             </Swiper>
-            /*<GestureRecognizer
-                onSwipeLeft={state => this._onSwipeLeft(state)}
-                onSwipeRight={state => this._onSwipeRight(state)}
-                config={config}
-                style={styles.gestureContainer}
-            >
-                <View
-                    style={styles.container}
-                >
-                        <ImageBackground
-                            resizeMode='contain'
-                            style={styles.image}
-                            source={{
-                                uri: fetchedArticles[currentArticles].urlToImage
-                            }}
-                        />
-                </View>
-            </GestureRecognizer>*/
         );
     }
 }
