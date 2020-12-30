@@ -23,6 +23,8 @@ You will need to have installed:
 
 Before launching the application, please refer to the [README of the API Server](https://github.com/MrrRaph/NewserServer/blob/master/README.md) mentionned previously and be sure the API Server is started.
 
+Rename the **.env.example** to **.env.development** file and fill in your API_KEY of NewsAPI and the IP:PORT of the Node API Server.
+
 Then following those requirements you will need to clone the repository and install dependencies:
 ```bash
 $ git clone https://github.com/MrrRaph/Newser.git

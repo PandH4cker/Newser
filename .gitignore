@@ -13,7 +13,7 @@ web-build/
 .DS_Store
 
 # .env
-.env.*
+.env.development
 
 # npm
 package-lock.json

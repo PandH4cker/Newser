@@ -1,3 +1,3 @@
 export default {
-    url: 'http://192.168.1.31:8080/api'
+    url: `http://${process.env.NODE_API_SERVER}:${process.env.SERVER_PORT}/api`
 }
